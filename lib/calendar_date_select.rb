@@ -1,6 +1,6 @@
-require "calendar_date_select/calendar_date_select.rb"
-require "calendar_date_select/form_helpers.rb"
-require "calendar_date_select/includes_helper.rb"
+require "calendar_date_select/calendar_date_select"
+require "calendar_date_select/form_helpers"
+require "calendar_date_select/includes_helper"
 
 require 'rails'
 require 'active_support'
@@ -12,7 +12,8 @@ module CalendarDateSelect
     '/lib/assets/javascripts/calendar_date_select',
     '/lib/assets/stylesheets/calendar_date_select', 
     '/lib/assets/images/calendar_date_select',
-    '/lib/assets/javascripts/calendar_date_select/locale'
+    '/lib/assets/javascripts/calendar_date_select/locale',
+    '/lib/assets/javascripts/calendar_date_select/formats'
   ]
 
   module Rails
