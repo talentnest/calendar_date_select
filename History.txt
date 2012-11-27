@@ -1,3 +1,6 @@
+== Version 1.17
+* Refactored formatters out into a composed class
+
 == Version 1.16.2
 
 * Fixed calendar_date_select's method of firing onChange for its target element. (Ethan)
@@ -144,8 +147,8 @@ Nov 12, 2007
 	* Updated test cases
 	* Bugfix for duplicate days that were occuring across day-light-saving-time boundaries
 	* Added format_american.js (thanks, Wes Hays)
-	* Added format_italian.js (thanks, Bigonazzi)
-	* Added format_euro_24hr.js (thanks, James Silberbauer)
+	* Added italian.js (thanks, Bigonazzi)
+	* Added euro_24hr.js (thanks, James Silberbauer)
 	* Bugfix for Konqueror - Was showing blank white box for popup window - had to do with Iframe hack.
 	* Code-refactoring, clean up, breaking down methods, making the code easier to understand and extend.
 	* Added new stylesheet definition: .calendar_date_select .cds_header a.close { display: none}.  Update your custom stylesheet with this new definition.

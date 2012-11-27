@@ -81,12 +81,45 @@ module CalendarDateSelect
     @calendar_date_select_format ||= FORMATS[:natural]
   end
 
+  def self.get_formatter
+    "DateFormatter." + case self.format[:name]
+      when :american
+       "American"
+
+      when :danish
+       "Danish"
+
+      when :db
+       "DB"
+
+      when :euro_24hr
+       "Euro24HR"
+
+      when :euro_24hr_ymd
+       "Euro24HRYMD"
+
+      when :finnish
+       "Finnish"
+
+      when :hyphen_ampm
+       "HyphenAMPM"
+
+      when :iso, :iso_date
+       "ISO"
+
+      when :italian
+       "Italian"
+
+      else
+       "Natural"
+      end
+  end
   # Set the format.  To see a list of available formats, CalendarDateSelect::FORMATS.keys, or open lib/calendar_date_select/calendar_date_select.rb
   #
   # (e.g. CalendarDateSelect.format = :italian)
   def self.format=(format)
     raise "CalendarDateSelect: Unrecognized format specification: #{format}" unless FORMATS.has_key?(format)
-    @calendar_date_select_format = FORMATS[format]
+    @calendar_date_select_format = FORMATS[format].merge({ :name => format })
   end
 
   def self.date_format_string(time = false)

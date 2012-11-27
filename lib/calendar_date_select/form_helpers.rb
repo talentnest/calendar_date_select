@@ -162,6 +162,9 @@ module CalendarDateSelect::FormHelpers
         javascript_options[key] = options.delete(key) if options.has_key?(key)
       end
 
+      # Set the formatter
+      javascript_options[:formatter_class] = CalendarDateSelect.get_formatter
+
       if (default_time = javascript_options[:default_time])
         if default_time.respond_to?(:strftime)
           javascript_options[:default_time] = "new Date('#{default_time.strftime(CalendarDateSelect.date_format_string(true))}')"
