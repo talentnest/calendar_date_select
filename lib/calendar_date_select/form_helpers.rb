@@ -144,13 +144,8 @@ module CalendarDateSelect::FormHelpers
         end
       end
 
-    tag = ActionView::Helpers::InstanceTag.new_with_backwards_compatibility(object, method, self, options.delete(:object))
-    calendar_date_select_output(
-      tag.to_input_field_tag( (javascript_options[:hidden] || javascript_options[:embedded]) ? "hidden" : "text", options),
-      image,
-      options,
-      javascript_options
-    )
+    element = element_renderer_class(javascript_options).new(object, method, self, options)
+    calendar_date_select_output(element.render, image, options, javascript_options)
   end
 
   private
@@ -228,6 +223,10 @@ module CalendarDateSelect::FormHelpers
       return year unless year.respond_to?(:first)
       return "[#{year.first}, #{year.last}]" unless year.first.respond_to?(:strftime)
       return "[#{year.first.year}, #{year.last.year}]"
+    end
+
+    def element_renderer_class(javascript_options)
+      (javascript_options[:hidden] || javascript_options[:embedded]) ? ActionView::Helpers::Tags::HiddenField : ActionView::Helpers::Tags::TextField
     end
 end
 
